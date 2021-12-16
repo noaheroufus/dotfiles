@@ -27,3 +27,6 @@ alias cdl='cd ~/Downloads'
 
 # TheFuck
 eval "$(thefuck --alias)"
+
+# pFetch
+/usr/bin/pfetch
