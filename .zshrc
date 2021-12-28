@@ -1,15 +1,24 @@
-#
-# ~/.bashrc
+# ~/.zshrc
 # Noah Roufus
+#
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# Configure history settings
+HISTFILE=~/.cache/zsh/history
+HISTSIZE=1000
+SAVEHIST=1000
 
-# Set TERM
-export TERM='xterm-256color'
+# Remove console beep
+unsetopt autocd beep
 
-# Prompt config
-export PS1='\[\e[0m\]\[\e[1;36m\]\u\[\e[0m\]\[\e[1;37m\]@\[\e[1;35m\]\h\[\e[1;37m\]:\[\e[33m\]\w\[\e[1;37m\]$\[\e[0m\] '
+# Turn on vi/vim key bindings
+bindkey -v
+
+# Autocomplete stuff
+autoload -Uz compinit
+compinit
+
+# Prompt
+export PS1="%B%F{cyan}%n%F{white}@%F{magenta}%m%F{white}:%F{yellow}%~%F{white}$%b "
 
 # Prepend to $PATH
 export PATH="~/.local/bin:$PATH"
@@ -29,6 +38,15 @@ alias cdp='cd ~/.projects'
 alias cdd='cd ~/Documents'
 alias cdl='cd ~/Downloads'
 alias clr='clear && pfetch'
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# oh-my-zsh plugins
+plugins=(git)
+
+# Initialize oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # TheFuck
 eval "$(thefuck --alias)"

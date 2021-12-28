@@ -7,7 +7,7 @@
 
 # List of files to link
 # Always links relative to $HOME/
-files=".bash_profile .bashrc .tmux.conf .vimrc .config/alacritty.yml"
+files=".bash_profile .bashrc .zshrc .tmux.conf .vimrc .config/alacritty.yml"
 
 curDir=$(dirname $(realpath "$0"))
 backupDir="${curDir}/backup"
