@@ -3,12 +3,11 @@ shell:
   args:
     - '-2'
 
-background_opacity: 0.96
-
 window:
+  opacity: 0.92
   dimensions:
-    columns: 180
-    lines: 50
+    columns: 160
+    lines: 30
   padding:
     x: 6
     y: 6
@@ -19,6 +18,17 @@ scrolling:
 
 selection:
   save_to_clipboard: true
+
+font:
+  size: 12
+  normal:
+    family: RobotoMono
+  bold:
+    family: RobotoMono
+    style: Medium
+  italic:
+    family: RobotoMono
+    style: Italic
 
 # https://github.com/eendroroy/alacritty-theme/blob/master/themes/horizon-dark.yaml
 colors:
