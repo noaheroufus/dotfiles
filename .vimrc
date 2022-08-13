@@ -18,6 +18,9 @@ call plug#begin()
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'sheerun/vim-polyglot'
     Plug 'vim-scripts/gmlua.vim'
+    Plug 'mattn/emmet-vim'
+    Plug 'majutsushi/tagbar'
+    Plug 'timakro/vim-yadi'
 call plug#end()
 
 set t_Co=256
@@ -85,17 +88,21 @@ let g:lightline = {
     \ 'colorscheme': 'onedark',
     \ 'active': {
     \  'left': [ [ ], [ 'mode', 'readonly' ], [ 'filename' ] ],
-    \  'right': [ [ 'lineinfo'], [ 'filetype' ], [ 'githunk' ] ]
+    \  'right': [ [ 'lineinfo'], [ 'filetype' ], [ 'tabstop' ], [ 'githunk' ] ]
     \ },
     \ 'component_function': {
     \  'githunk': 'GetHunkString'
+    \ },
+    \ 'component': {
+    \  'tabstop': '%{&expandtab?shiftwidth()."-S":"-T"}'
     \ }
 \ }
 
 let g:gitgutter_preview_win_floating=1
 let g:better_whitespace_guicolor="#b87b7b"
 
-let NERDTreeQuitOnOpen = 1
+
+let NERDTreeQuitOnOpen = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeNaturalSort = 1
 let NERDTreeShowHidden = 1
@@ -109,19 +116,19 @@ function NewTab()
     :silent NERDTreeToggle
 endfunction
 
+function StartupTasks()
+    :silent TagbarOpen
+    :silent NERDTree
+endfunction
+
+autocmd VimEnter * :call StartupTasks()
+autocmd BufRead * DetectIndent
+
 let mapleader = "\<Space>"
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
 noremap <LeftMouse> <Nop>
 noremap <MiddleMouse> <Nop>
 noremap <RightMouse> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
 inoremap <LeftMouse> <Nop>
 inoremap <MiddleMouse> <Nop>
 inoremap <RightMouse> <Nop>
